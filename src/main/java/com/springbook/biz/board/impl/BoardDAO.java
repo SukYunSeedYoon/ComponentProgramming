@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+// 어노테이션을 통해 자동으로 생성하여 DAO 객체 등록할 수 있도록
 @Repository("boardDAO")
 public class BoardDAO implements BoardService {
 
@@ -23,8 +24,8 @@ public class BoardDAO implements BoardService {
 
 
     // SQL 명령어
-    private final String BOARD_INSERT = "insert into board(seq, title, writer, content) " +
-            "values((select nval(max(seq), 0)+1 from board), ?,?,?)";
+    private final String BOARD_INSERT = "insert into board(title, writer, content) " +
+            "values( ?,?,?)";
 
     private final String BOARD_UPDATE = "update board set title=?, content=? where seq=?";
     private final String BOARD_DELETE = "delete board where seq=?";
@@ -48,7 +49,7 @@ public class BoardDAO implements BoardService {
         }
     }
 
-    public void UpdteBoad(BoardVO vo){
+    public void UpdateBoard(BoardVO vo){
         System.out.println("===> JDBC로 updatBoard() 기능 처리");
 
         try {
@@ -111,9 +112,9 @@ public class BoardDAO implements BoardService {
     }
 
     // 글 목록 조회
-    public List<BoardDAO> GetBoardList(BoardVO vo){
+    public List<BoardVO> GetBoardList(BoardVO vo){
         System.out.println("===> JDBC로 getBoardList() 처리");
-        List<BoardDAO> boardList = new ArrayList<BoardDAO>();
+        List<BoardVO> boardList = new ArrayList<BoardVO>();
         try {
             conn = JDBCUtil.getConnection();
             stmt = conn.prepareStatement(BOARD_LIST);

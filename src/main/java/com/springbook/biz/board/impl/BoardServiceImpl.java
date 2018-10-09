@@ -7,26 +7,22 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("boardservice")
+
+// 구현 객체 등록
+@Service("boardService")
 public class BoardServiceImpl implements BoardService {
 
 
-    // DI
-    public void setBoardDAO(BoardDAO dao) {
-        boardDAO = dao;
-    }
-
-
+    // DAO 객체 주
     @Autowired
     private BoardDAO boardDAO;
-
 
     public void InsertBoard(BoardVO vo) {
         boardDAO.InsertBoard(vo);
     }
 
-    public void UpdteBoad(BoardVO vo) {
-        boardDAO.UpdteBoad(vo);
+    public void UpdateBoard(BoardVO vo) {
+        boardDAO.UpdateBoard(vo);
     }
 
     public void DeleteBoard(BoardVO vo) {
@@ -37,8 +33,8 @@ public class BoardServiceImpl implements BoardService {
         return boardDAO.GetBoard(vo);
     }
 
-    public List<BoardDAO> GetBoardList(BoardVO vo) {
+    public List<BoardVO> GetBoardList(BoardVO vo) {
         return boardDAO.GetBoardList(vo);
     }
-}
+
 }

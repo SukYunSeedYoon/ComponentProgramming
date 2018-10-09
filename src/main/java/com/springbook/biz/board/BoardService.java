@@ -1,13 +1,12 @@
 package com.springbook.biz.board;
 
-import com.springbook.biz.board.impl.BoardDAO;
 
 import java.util.List;
 
 public interface BoardService {
     void InsertBoard(BoardVO vo);
 
-    void UpdteBoad(BoardVO vo);
+    void UpdateBoard(BoardVO vo);
 
     void DeleteBoard(BoardVO vo);
 
@@ -15,5 +14,5 @@ public interface BoardService {
     BoardVO GetBoard(BoardVO vo);
 
     // 글 목록 조회
-    List<BoardDAO> GetBoardList(BoardVO vo);
+    List<BoardVO> GetBoardList(BoardVO vo);
 }
