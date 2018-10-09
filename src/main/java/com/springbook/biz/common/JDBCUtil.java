@@ -64,7 +64,7 @@ public class JDBCUtil {
         if (stmt != null) {
             try {
                 if (!stmt.isClosed())
-                    rs.close();
+                    stmt.close();
 
             } catch (Exception e) {
                 e.printStackTrace();
